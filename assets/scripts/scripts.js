@@ -41,7 +41,12 @@ $(document).ready(function () {
             <div class="publications_header">
               ${
                 publication.writers.length
-                  ? publication.writers.map((writer) => `<span>${writer}</span>`).join(", ")
+                  ? publication.writers
+                      .map(
+                        (writer) =>
+                          `<span${writer === "Trinh, H. T." ? ' class="publication_self"' : ""}>${writer}</span>`
+                      )
+                      .join(", ")
                   : ""
               }
               ${publication.date ? `<span>(${publication.date}).</span>` : ""}
