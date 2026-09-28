@@ -105,6 +105,7 @@ $(document).ready(function () {
       { img: "./assets/images/icons/location.png", title: globalData.enAddress, active: Boolean(globalData.enAddress) },
       { img: "./assets/images/icons/phone.png", url: `tel:${globalData.phone.replace(/\s/g, "")}`, name: globalData.phone, active: Boolean(globalData.phone) },
       { img: "./assets/images/icons/mail.png", url: `mailto:${globalData.email}`, name: globalData.email, active: Boolean(globalData.email) },
+      { img: "./assets/images/icons/cv.png", url: globalData.recommendationRequest, name: globalData.recommendationRequestTitle, active: Boolean(globalData.recommendationRequest) },
       { img: "./assets/images/icons/twitter.png", url: globalData.twitter, name: globalData.twitterTitle, active: Boolean(globalData.twitter) },
       { img: "./assets/images/icons/whatsapp.png", url: globalData.whatsapp, name: globalData.whatsappTitle, active: Boolean(globalData.whatsapp) },
       { img: "./assets/images/icons/google-scholar.png", url: globalData.googleScholar, name: globalData.googleScholarTitle, active: Boolean(globalData.googleScholar) },

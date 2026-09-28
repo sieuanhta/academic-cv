@@ -43,6 +43,16 @@
   display: none;
 }
 
+.contact_intro {
+  max-width: 720px;
+  margin: 1rem 0 0;
+  color: #555;
+}
+
+.contact_intro + #contact_data {
+  margin-top: 2rem;
+}
+
 .navbar-toggler {
   display: none;
 }

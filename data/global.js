@@ -12,6 +12,8 @@ const globalData = {
   enAddress: "Hanoi, Vietnam",
   phone: "+84 879 290 105",
   email: "trinhhaitienemail@gmail.com",
+  recommendationRequestTitle: "Submit a recommendation letter (Dropbox)",
+  recommendationRequest: "https://www.dropbox.com/request/5enhq8rvt2k5lbhaz3v5",
   twitterTitle: "",
   twitter: "",
   whatsappTitle: "",
