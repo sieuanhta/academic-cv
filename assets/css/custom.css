@@ -43,10 +43,25 @@
   display: none;
 }
 
-.publication_container .publications_header .publication_self {
-  color: #000;
-  font-style: normal;
+.publication_container .publications_header strong.publication_self {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.2rem;
+  color: #0b4f8a !important;
+  background-color: #e8f2fb;
+  font-style: normal !important;
+  font-weight: 800 !important;
+}
+
+.publication_container .publications_header h2 {
+  display: block;
+  margin-top: 0.55rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid #0b4f8a;
+  color: #0b4f8a;
+  font-size: 1.25rem;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .contact_intro {

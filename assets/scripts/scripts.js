@@ -44,7 +44,9 @@ $(document).ready(function () {
                   ? publication.writers
                       .map(
                         (writer) =>
-                          `<span${writer === "Trinh, H. T." ? ' class="publication_self"' : ""}>${writer}</span>`
+                          writer === "Trinh, H. T."
+                            ? `<strong class="publication_self">${writer}</strong>`
+                            : `<span>${writer}</span>`
                       )
                       .join(", ")
                   : ""
