@@ -1,32 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#123c69" />
-    <meta
-      name="description"
-      content="Trinh Hai Tien is a computer science undergraduate and researcher working in mechanism design, statistical learning, scientific machine learning, and quantitative finance."
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Academic CV of Trinh Hai Tien, a computer science undergraduate and researcher in mechanism design, statistical learning, scientific machine learning, and quantitative finance." />
     <meta property="og:title" content="Trinh Hai Tien · Academic CV" />
     <meta property="og:description" content="Research, publications, experience, and academic CV." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sieuanhta.github.io/academic-cv/" />
     <link rel="canonical" href="https://sieuanhta.github.io/academic-cv/" />
-    <link rel="icon" href="files/profile.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="./assets/images/icons/favicon.png" />
+    <link href="./assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="./assets/css/aos.css" rel="stylesheet" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/custom.css" rel="stylesheet" />
+    <script src="./assets/scripts/default.js"></script>
+    <script src="./data/global.js"></script>
+    <script src="./lang/en.js"></script>
+    <script src="./data/navbar.js"></script>
+    <script>
+      $(function () {
+        $("#include_navbar").load("./utils/navbar.html", function () {
+          renderNavbar();
+          AOS.init();
+        });
+      });
+    </script>
     <title>Trinh Hai Tien · Academic CV</title>
   </head>
   <body data-page="home">
-    <a class="skip-link" href="#page-content">Skip to content</a>
-    <header class="site-header" id="site-header"></header>
-    <main class="site-main site-container" id="page-content">
-      <noscript>This website requires JavaScript to display the CV content.</noscript>
+    <div id="include_navbar"></div>
+    <main class="container" data-aos="fade-in" id="content_wrapper">
+      <div class="row main_header">
+        <div class="col-lg-4 main_header_info">
+          <img alt="" id="home_image" />
+          <h1 id="home_name"></h1>
+          <h2 id="home_job_title"></h2>
+          <div id="home_links"></div>
+        </div>
+        <div class="col-lg-8 main_header_content">
+          <h2 id="home_title" class="title"></h2>
+          <div id="home_content"></div>
+        </div>
+      </div>
     </main>
-    <footer class="site-footer" id="site-footer"></footer>
-    <script src="data/global.js"></script>
-    <script src="lang/en.js"></script>
-    <script src="data/navbar.js"></script>
-    <script src="assets/scripts/scripts.js"></script>
+    <script src="./assets/scripts/scripts.js"></script>
   </body>
 </html>

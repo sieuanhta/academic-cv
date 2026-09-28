@@ -1,345 +1,139 @@
-const iconLink = (href, icon, label, external = true) => `
-  <a class="icon-link" href="${href}" ${
-    external ? 'target="_blank" rel="noopener"' : ""
-  } aria-label="${label}" title="${label}">
-    <img src="assets/images/icons/${icon}" alt="" aria-hidden="true" />
-  </a>`;
+$(document).ready(function () {
+  const page = document.body.dataset.page || "home";
 
-function pageIntro(kicker, title, intro) {
-  return `
-    <header class="page-intro reveal">
-      <p class="eyebrow">${kicker}</p>
-      <h1>${title}</h1>
-      <p class="page-lede">${intro}</p>
-    </header>`;
-}
+  const homeData = {
+    image: globalData.image,
+    links: [
+      { name: `mailto:${globalData.email}`, active: Boolean(globalData.email), img: "./assets/images/icons/mail.png", label: "Email" },
+      { name: globalData.whatsapp, active: Boolean(globalData.whatsapp), img: "./assets/images/icons/whatsapp.png", label: "WhatsApp" },
+      { name: globalData.twitter, active: Boolean(globalData.twitter), img: "./assets/images/icons/twitter.png", label: "Twitter" },
+      { name: globalData.linkedin, active: Boolean(globalData.linkedin), img: "./assets/images/icons/linkedin.png", label: "LinkedIn" },
+      { name: globalData.github, active: Boolean(globalData.github), img: "./assets/images/icons/github.png", label: "GitHub" },
+      { name: globalData.resume, active: Boolean(globalData.resume), img: "./assets/images/icons/resume.png", label: "Curriculum vitae" },
+    ],
+  };
 
-function renderHome() {
-  const data = enHomePageData;
-  return `
-    <section class="hero reveal">
-      <div class="hero-profile">
-        <div class="portrait-wrap">
-          <img class="portrait" src="${globalData.image}" alt="Initials portrait for ${globalData.name}" />
-          <span class="availability-dot" title="Based in Hanoi, Vietnam"></span>
-        </div>
-        <div class="hero-identity">
-          <p class="eyebrow">${data.eyebrow}</p>
-          <h1>${globalData.name}</h1>
-          <p class="hero-title">${globalData.jobTitle}</p>
-          <div class="social-links" aria-label="Profile links">
-            ${iconLink(`mailto:${globalData.email}`, "mail.png", "Email", false)}
-            ${iconLink(globalData.github, "github.png", "GitHub")}
-            ${iconLink(globalData.linkedin, "linkedin.png", "LinkedIn")}
-            ${iconLink(globalData.resume, "resume.png", "CV")}
-          </div>
-        </div>
-      </div>
-      <div class="hero-copy">
-        <p class="section-label">About me</p>
-        ${data.intro.map((paragraph) => `<p>${paragraph}</p>`).join("")}
-        <div class="hero-actions">
-          <a class="button button-primary" href="research.html">Explore my research <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="${globalData.resume}" target="_blank" rel="noopener">View full CV</a>
-        </div>
-      </div>
-    </section>
+  function renderHome() {
+    document.getElementById("home_image").src = homeData.image || "";
+    document.getElementById("home_image").alt = enHomePageData.name;
+    document.getElementById("home_name").textContent = enHomePageData.name;
+    document.getElementById("home_job_title").textContent = enHomePageData.jobTitle;
+    document.getElementById("home_links").innerHTML = homeData.links
+      .filter((item) => item.active)
+      .map(
+        (link) => `
+          <li>
+            <a href="${link.name}" target="_blank" rel="noopener" aria-label="${link.label}" title="${link.label}">
+              <img src="${link.img}" alt="" />
+            </a>
+          </li>`
+      )
+      .join("");
+    document.getElementById("home_title").textContent = enHomePageData.home_title;
+    document.getElementById("home_content").innerHTML = enHomePageData.home_content;
+  }
 
-    <section class="stats-grid reveal" aria-label="Selected highlights">
-      ${data.highlights
-        .map(
-          (item) => `
-            <div class="stat-item">
-              <span class="stat-value">${item.value}</span>
-              <span class="stat-label">${item.label}</span>
-            </div>`
-        )
-        .join("")}
-    </section>
+  function setPublicationData(id, data) {
+    document.getElementById(id).innerHTML = data
+      .map(
+        (publication) => `
+          <div class="publications_item">
+            <div class="publications_header">
+              ${
+                publication.writers.length
+                  ? publication.writers.map((writer) => `<span>${writer}</span>`).join(", ")
+                  : ""
+              }
+              ${publication.date ? `<span>(${publication.date}).</span>` : ""}
+              <h2>${publication.title}</h2>
+            </div>
+            <p>${publication.abstract}</p>
+            <ul class="publications_footer">
+              ${publication.link ? `<li><a href="${publication.link}" target="_blank" rel="noopener">View</a></li>` : ""}
+              ${publication.github ? `<li><a href="${publication.github}" target="_blank" rel="noopener">GitHub</a></li>` : ""}
+            </ul>
+          </div>`
+      )
+      .join("");
+  }
 
-    <section class="content-section two-column reveal">
-      <div>
-        <p class="section-label">Research interests</p>
-        <h2>Learning, incentives, and decisions</h2>
-        <p class="muted">I work across theory and applications, connecting rigorous models with computational experiments.</p>
-      </div>
-      <div class="tag-cloud">
-        ${data.interests.map((interest) => `<span>${interest}</span>`).join("")}
-      </div>
-    </section>
+  function renderPublications() {
+    const data = enPublicationsPageData;
+    const groups = ["one", "two", "three", "four"];
+    groups.forEach((group) => {
+      document.getElementById(`publications_type_${group}_title`).textContent = data[`type_${group}_title`];
+      setPublicationData(`publications_type_${group}_data`, data[`type_${group}_items`]);
+    });
+  }
 
-    <section class="content-section reveal">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">Education</p>
-          <h2>Academic background</h2>
-        </div>
-        <span class="section-date">${data.education.dates}</span>
-      </div>
-      <article class="education-card">
-        <div>
-          <h3>${data.education.institution}</h3>
-          <p class="education-degree">${data.education.degree}</p>
-          <p class="muted">${data.education.location}</p>
-        </div>
-        <ul>
-          ${data.education.details.map((detail) => `<li>${detail}</li>`).join("")}
-        </ul>
-      </article>
-    </section>
+  function renderResearch() {
+    document.getElementById("research_title").textContent = enResearchPageData.title;
+    document.getElementById("research_data").innerHTML = enResearchPageData.content;
+  }
 
-    <section class="content-section reveal">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">Recognition</p>
-          <h2>Selected honors & awards</h2>
-        </div>
-      </div>
-      <div class="award-list">
-        ${data.awards
-          .map(
-            (award) => `
-              <article class="award-item">
-                <span class="award-year">${award.year}</span>
-                <div><h3>${award.name}</h3><p>${award.organization}</p></div>
-              </article>`
-          )
-          .join("")}
-      </div>
-      <div class="subsection-heading"><h3>Scholarships</h3></div>
-      <div class="award-list compact">
-        ${data.scholarships
-          .map(
-            (award) => `
-              <article class="award-item">
-                <span class="award-year">${award.year}</span>
-                <div><h3>${award.name}</h3>${
-                  award.organization ? `<p>${award.organization}</p>` : ""
-                }</div>
-              </article>`
-          )
-          .join("")}
-      </div>
-    </section>
-
-    <section class="content-section reveal">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">Toolkit</p>
-          <h2>Skills & methods</h2>
-        </div>
-      </div>
-      <div class="skills-grid">
-        ${data.skills
-          .map(
-            (group) => `
-              <article class="skill-card">
-                <h3>${group.title}</h3>
-                <div>${group.items.map((item) => `<span>${item}</span>`).join("")}</div>
-              </article>`
-          )
-          .join("")}
-      </div>
-      <div class="language-row">
-        ${data.languages
-          .map(
-            (language) => `
-              <div><strong>${language.name}</strong><span>${language.level}</span></div>`
-          )
-          .join("")}
-      </div>
-    </section>`;
-}
-
-function renderPublications() {
-  const data = enPublicationsPageData;
-  let itemNumber = data.groups.reduce((total, group) => total + group.items.length, 0);
-
-  return `
-    ${pageIntro("Selected work", "Publications & presentations", data.intro)}
-    <div class="publication-groups">
-      ${data.groups
-        .map((group) => {
-          const groupHtml = `
-            <section class="publication-group reveal">
-              <div class="group-heading">
-                <h2>${group.title}</h2>
-                <span>${String(group.items.length).padStart(2, "0")}</span>
-              </div>
-              <div class="publication-list">
-                ${group.items
-                  .map((publication) => {
-                    const currentNumber = itemNumber--;
-                    return `
-                      <article class="publication-item">
-                        <span class="publication-number">${String(currentNumber).padStart(2, "0")}</span>
-                        <div>
-                          <div class="publication-meta">
-                            <span>${publication.status}</span>
-                            ${publication.year ? `<span>${publication.year}</span>` : ""}
-                          </div>
-                          <h3>${publication.title}</h3>
-                          <p class="publication-authors">${publication.authors}</p>
-                          <p class="publication-venue">${publication.venue}</p>
-                        </div>
-                      </article>`;
-                  })
-                  .join("")}
-              </div>
-            </section>`;
-          return groupHtml;
-        })
-        .join("")}
-    </div>`;
-}
-
-function renderResearch() {
-  const data = enResearchPageData;
-  return `
-    ${pageIntro("Research agenda", "Rigorous learning under uncertainty", data.intro)}
-    <section class="research-grid">
-      ${data.areas
-        .map(
-          (area) => `
-            <article class="research-card reveal">
-              <span class="research-number">${area.number}</span>
+  function renderJobs() {
+    document.getElementById("jobs_title").textContent = enJobsPageData.title;
+    document.getElementById("jobs_data").innerHTML = enJobsPageData.items
+      .map(
+        (job) => `
+          <div class="job_item">
+            <div class="job_header">
               <div>
-                <h2>${area.title}</h2>
-                <p class="research-summary">${area.summary}</p>
-                <p>${area.details}</p>
-                <div class="method-list">
-                  ${area.methods.map((method) => `<span>${method}</span>`).join("")}
-                </div>
+                <h1>${job.title},</h1>
+                <h2>${job.company}</h2>
               </div>
-            </article>`
-        )
-        .join("")}
-    </section>
-    <aside class="research-note reveal">
-      <p class="section-label">Open to collaboration</p>
-      <h2>Interested in related questions?</h2>
-      <p>I welcome conversations about research at the intersection of learning, incentives, and decision-making.</p>
-      <a href="mailto:${globalData.email}">Start a conversation <span aria-hidden="true">→</span></a>
-    </aside>`;
-}
-
-function renderExperience() {
-  const data = enJobsPageData;
-  return `
-    ${pageIntro("Research experience", "From theory to real-world systems", data.intro)}
-    <section class="timeline reveal">
-      ${data.items
-        .map(
-          (item) => `
-            <article class="timeline-item">
-              <div class="timeline-marker" aria-hidden="true"></div>
-              <div class="timeline-meta">
-                <span>${item.dates}</span>
-                ${item.location ? `<span>${item.location}</span>` : ""}
+              <div>
+                <span>${job.startData} - ${job.endDate || "Present"}</span>
+                ${job.location ? `<span class="job_location">${job.location}</span>` : ""}
               </div>
-              <div class="timeline-content">
-                <h2>${item.title}</h2>
-                <p class="timeline-company">${item.company}</p>
-                <p>${item.summary}</p>
-                <ul>${item.achievements
-                  .map((achievement) => `<li>${achievement}</li>`)
-                  .join("")}</ul>
-              </div>
-            </article>`
-        )
-        .join("")}
-    </section>`;
-}
+            </div>
+            <p>${job.abstract}</p>
+            ${
+              job.achievements.length
+                ? `<div class="job_achievements"><ul>${job.achievements
+                    .map((achievement) => `<li>${achievement}</li>`)
+                    .join("")}</ul></div>`
+                : ""
+            }
+          </div>`
+      )
+      .join("");
+  }
 
-function renderContact() {
-  const contactItems = [
-    {
-      icon: "mail.png",
-      label: "Email",
-      value: globalData.email,
-      href: `mailto:${globalData.email}`,
-    },
-    {
-      icon: "github.png",
-      label: "GitHub",
-      value: globalData.githubTitle,
-      href: globalData.github,
-    },
-    {
-      icon: "linkedin.png",
-      label: "LinkedIn",
-      value: globalData.linkedinTitle,
-      href: globalData.linkedin,
-    },
-    {
-      icon: "phone.png",
-      label: "Phone",
-      value: globalData.phone,
-      href: globalData.phoneHref,
-    },
-    {
-      icon: "location.png",
-      label: "Location",
-      value: globalData.address,
-      href: "",
-    },
-    {
-      icon: "resume.png",
-      label: "Curriculum vitae",
-      value: "View PDF",
-      href: globalData.resume,
-    },
-  ];
+  function renderContact() {
+    const contactItems = [
+      { img: "./assets/images/icons/location.png", title: globalData.enAddress, active: Boolean(globalData.enAddress) },
+      { img: "./assets/images/icons/phone.png", url: `tel:${globalData.phone.replace(/\s/g, "")}`, name: globalData.phone, active: Boolean(globalData.phone) },
+      { img: "./assets/images/icons/mail.png", url: `mailto:${globalData.email}`, name: globalData.email, active: Boolean(globalData.email) },
+      { img: "./assets/images/icons/twitter.png", url: globalData.twitter, name: globalData.twitterTitle, active: Boolean(globalData.twitter) },
+      { img: "./assets/images/icons/whatsapp.png", url: globalData.whatsapp, name: globalData.whatsappTitle, active: Boolean(globalData.whatsapp) },
+      { img: "./assets/images/icons/google-scholar.png", url: globalData.googleScholar, name: globalData.googleScholarTitle, active: Boolean(globalData.googleScholar) },
+      { img: "./assets/images/icons/orcid.png", url: globalData.orcid, name: globalData.orcidTitle, active: Boolean(globalData.orcid) },
+      { img: "./assets/images/icons/github.png", url: globalData.github, name: globalData.githubTitle, active: Boolean(globalData.github) },
+      { img: "./assets/images/icons/linkedin.png", url: globalData.linkedin, name: globalData.linkedinTitle, active: Boolean(globalData.linkedin) },
+      { img: "./assets/images/icons/resume.png", url: globalData.resume, name: "Download CV", active: Boolean(globalData.resume) },
+    ];
 
-  return `
-    ${pageIntro(
-      "Get in touch",
-      "Let’s discuss ideas",
-      "For research conversations, collaborations, or other professional inquiries, email is the best way to reach me."
-    )}
-    <section class="contact-layout reveal">
-      <div class="contact-card">
-        ${contactItems
-          .map(
-            (item) => `
-              <div class="contact-item">
-                <img src="assets/images/icons/${item.icon}" alt="" aria-hidden="true" />
-                <div>
-                  <span>${item.label}</span>
-                  ${
-                    item.href
-                      ? `<a href="${item.href}" ${
-                          item.href.startsWith("http") || item.href.endsWith(".pdf")
-                            ? 'target="_blank" rel="noopener"'
-                            : ""
-                        }>${item.value}</a>`
-                      : `<p>${item.value}</p>`
-                  }
-                </div>
-              </div>`
-          )
-          .join("")}
-      </div>
-      <div class="contact-aside">
-        <p class="section-label">Current focus</p>
-        <h2>Learning and decision-making under uncertainty</h2>
-        <p>Based in Hanoi and currently working across mechanism design, scientific machine learning, and quantitative finance.</p>
-        <a class="button button-primary" href="mailto:${globalData.email}">Send an email <span aria-hidden="true">→</span></a>
-      </div>
-    </section>`;
-}
+    document.getElementById("contact_title").textContent = "Contact";
+    document.getElementById("contact_data").innerHTML = contactItems
+      .filter((item) => item.active)
+      .map(
+        (item) => `
+          <li>
+            <img src="${item.img}" alt="" />
+            ${
+              item.url
+                ? `<a href="${item.url}"${item.url.startsWith("http") || item.url.endsWith(".pdf") ? ' target="_blank" rel="noopener"' : ""}>${item.name || item.url}</a>`
+                : `<p>${item.title}</p>`
+            }
+          </li>`
+      )
+      .join("");
+  }
 
-const pageRenderers = {
-  home: renderHome,
-  publications: renderPublications,
-  research: renderResearch,
-  experience: renderExperience,
-  contact: renderContact,
-};
-
-const pageContent = document.getElementById("page-content");
-const pageName = document.body.dataset.page || "home";
-
-if (pageContent && pageRenderers[pageName]) {
-  pageContent.innerHTML = pageRenderers[pageName]();
-}
+  if (page === "home") renderHome();
+  if (page === "publications") renderPublications();
+  if (page === "research") renderResearch();
+  if (page === "jobs") renderJobs();
+  if (page === "contact") renderContact();
+});

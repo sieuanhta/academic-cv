@@ -1,318 +1,224 @@
+// ---------- Navbar titles
+const enNavbarData = {
+  title: "Trinh Hai Tien",
+  Home: "Home",
+  publications: "Publications",
+  Research: "Research",
+  Jobs: "Experience",
+  Contact: "Contact",
+};
+
+// ---------- Home page data
 const enHomePageData = {
-  eyebrow: "Researcher · Computer Science · Hanoi",
-  intro: [
-    "I am a computer science undergraduate at VNU University of Engineering and Technology, interested in mathematical and computational approaches to decision-making under uncertainty.",
-    "My current work spans mechanism design, statistical learning, scientific machine learning, and quantitative finance. I am especially interested in problems where learning, incentives, and limited information interact.",
-  ],
-  interests: [
-    "Mechanism Design",
-    "Statistical Learning",
-    "Information Economics",
-    "Scientific Machine Learning",
-    "Quantitative Finance",
-    "Multi-Agent Systems",
-  ],
-  education: {
-    institution:
-      "Vietnam National University, Hanoi — University of Engineering and Technology (VNU-UET)",
-    degree: "Bachelor of Science in Computer Science",
-    dates: "2023–2027",
-    location: "Hanoi, Vietnam",
-    details: [
-      "GPA: 3.60/4.00",
-      "Dissertation: “The Price of Learning Quality in Finite-Inventory Information Procurement”",
-      "Advisor: Dr. Duyen Thi Ngo",
-    ],
-  },
-  highlights: [
-    {
-      value: "2",
-      label: "peer-reviewed conference papers",
-    },
-    {
-      value: "7th",
-      label: "worldwide in IMC Prosperity 4",
-    },
-    {
-      value: "2",
-      label: "active research appointments",
-    },
-  ],
-  awards: [
-    {
-      name: "Bronze Award, Student Scientific Research Competition",
-      organization: "VNU-UET",
-      year: "2026",
-    },
-    {
-      name: "Silver Award, Student Scientific Research Competition",
-      organization: "VNU-UET",
-      year: "2025",
-    },
-    {
-      name: "7th worldwide of 18,803 teams; 1st in Asia",
-      organization: "IMC Prosperity 4 Algorithmic Trading Competition",
-      year: "2026",
-    },
-    {
-      name: "Robotics Challenge Fellowship",
-      organization: "Japan",
-      year: "2024",
-    },
-    {
-      name: "Bronze Medal",
-      organization: "Vietnam National Mathematics Olympiad",
-      year: "2023",
-    },
-    {
-      name: "Silver Medal",
-      organization: "VNU University of Science Mathematics Competition",
-      year: "2023",
-    },
-    {
-      name: "Bronze Medal (Mathematics)",
-      organization:
-        "Vietnam Coastal and Northern Delta Science and Humanities Competition",
-      year: "2023",
-    },
-    {
-      name: "Silver Medal",
-      organization: "Vietnam National University Chess Tournament",
-      year: "2025",
-    },
-  ],
-  scholarships: [
-    {
-      name: "Academic Encouragement Scholarship",
-      organization: "VNU University of Engineering and Technology",
-      year: "2026",
-    },
-    {
-      name: "Gifted Student Scholarship",
-      organization: "",
-      year: "2020–2023",
-    },
-  ],
-  skills: [
-    {
-      title: "Programming & scientific computing",
-      items: ["Python", "C++", "Java", "Rust", "Mathematica", "LaTeX"],
-    },
-    {
-      title: "Machine learning & data",
-      items: [
-        "PyTorch",
-        "DeepXDE",
-        "NumPy",
-        "pandas",
-        "scikit-learn",
-        "Deep learning",
-        "Automatic differentiation",
-      ],
-    },
-    {
-      title: "Mathematical & quantitative methods",
-      items: [
-        "Probability",
-        "Statistics",
-        "Optimization",
-        "Game theory",
-        "Mechanism design",
-        "Time-series analysis",
-        "Numerical methods",
-      ],
-    },
-    {
-      title: "Research & development",
-      items: ["Git", "GitHub", "Jupyter Notebook", "VS Code", "Conda"],
-    },
-  ],
-  languages: [
-    { name: "Vietnamese", level: "Native" },
-    {
-      name: "English",
-      level: "Professional proficiency · IELTS Academic 7.5 (June 2026)",
-    },
-  ],
+  name: "Trinh Hai Tien",
+  jobTitle: "Computer Science Undergraduate & Researcher",
+  home_title: "About me",
+  home_content: `
+    <div>
+      <p>
+        I am a computer science undergraduate at VNU University of Engineering and Technology,
+        interested in mathematical and computational approaches to decision-making under uncertainty.
+        My current research spans mechanism design, statistical learning, scientific machine learning,
+        and quantitative finance.
+      </p>
+
+      <h2 class="title">Education</h2>
+      <div class="home-block">
+        <div class="home-meta-row">
+          <strong>Vietnam National University, Hanoi — University of Engineering and Technology (VNU-UET)</strong>
+          <span>2023–2027</span>
+        </div>
+        <em>Bachelor of Science in Computer Science</em>
+        <ul>
+          <li>GPA: 3.60/4.00</li>
+          <li>Dissertation: “The Price of Learning Quality in Finite-Inventory Information Procurement”</li>
+          <li>Advisor: Dr. Duyen Thi Ngo</li>
+        </ul>
+      </div>
+
+      <h2 class="title">Research interests</h2>
+      <ul class="home-columns">
+        <li>Mechanism design and information economics</li>
+        <li>Statistical learning and decision-making under uncertainty</li>
+        <li>Scientific machine learning and neural surrogates</li>
+        <li>Multi-agent systems and online algorithms</li>
+        <li>Affective computing and representation learning</li>
+        <li>Quantitative finance and market microstructure</li>
+      </ul>
+
+      <h2 class="title">Honors & awards</h2>
+      <ul class="home-awards">
+        <li><strong>2026</strong> — Bronze Award, Student Scientific Research Competition, VNU-UET</li>
+        <li><strong>2026</strong> — 7th worldwide of 18,803 teams and 1st in Asia, IMC Prosperity 4</li>
+        <li><strong>2025</strong> — Silver Award, Student Scientific Research Competition, VNU-UET</li>
+        <li><strong>2025</strong> — Silver Medal, Vietnam National University Chess Tournament</li>
+        <li><strong>2024</strong> — Robotics Challenge Fellowship, Japan</li>
+        <li><strong>2023</strong> — Bronze Medal, Vietnam National Mathematics Olympiad</li>
+        <li><strong>2023</strong> — Silver Medal, VNU University of Science Mathematics Competition</li>
+        <li><strong>2023</strong> — Bronze Medal (Mathematics), Vietnam Coastal and Northern Delta Science and Humanities Competition</li>
+      </ul>
+
+      <h2 class="title">Scholarships</h2>
+      <ul>
+        <li>Academic Encouragement Scholarship, VNU University of Engineering and Technology, 2026</li>
+        <li>Gifted Student Scholarship, 2020–2023</li>
+      </ul>
+
+      <h2 class="title">Technical skills</h2>
+      <div class="home-skills">
+        <p><strong>Programming & scientific computing:</strong> Python, C++, Java, Rust, Mathematica, LaTeX</p>
+        <p><strong>Machine learning & data:</strong> PyTorch, DeepXDE, NumPy, pandas, scikit-learn, deep learning, automatic differentiation, numerical optimization</p>
+        <p><strong>Mathematical & quantitative methods:</strong> Probability, statistics, optimization, game theory, mechanism design, time-series analysis, numerical methods</p>
+        <p><strong>Research & development:</strong> Git, GitHub, Jupyter Notebook, VS Code, Conda</p>
+      </div>
+
+      <h2 class="title">Languages</h2>
+      <p><strong>Vietnamese:</strong> Native<br /><strong>English:</strong> Professional proficiency; IELTS Academic 7.5 (June 2026)</p>
+    </div>
+  `,
 };
 
+// ---------- Publications page data
 const enPublicationsPageData = {
-  intro:
-    "Peer-reviewed work and current manuscripts across affective computing, mechanism design, multi-agent systems, and scientific machine learning.",
-  groups: [
+  type_one_title: "Peer-Reviewed Conference Proceedings",
+  type_one_items: [
     {
-      title: "Peer-Reviewed Conference Proceedings",
-      items: [
-        {
-          title:
-            "Disentangling identity and motion information in micro-expression videos for micro-expression recognition",
-          authors:
-            "Trinh, H. T., Nguyen, B. D., Nguyen, L. T., Le, T. H., & Ngo, T. D.",
-          venue:
-            "Proceedings of the Conference on Information Technology and its Applications (CITA 2026)",
-          year: "2026",
-          status: "Conference paper",
-        },
-        {
-          title:
-            "Enhancing micro-expression recognition via multi-task learning with demographic-aware auxiliary supervision",
-          authors:
-            "Trinh, H. T., Man, T. B. P., Khuong, V. T. A., Nguyen, L. T., Le, T. H., & Ngo, T. D.",
-          venue:
-            "Proceedings of the International Conference on Knowledge and Systems Engineering (KSE 2025)",
-          year: "2025",
-          status: "Conference paper",
-        },
-      ],
+      title: "Disentangling identity and motion information in micro-expression videos for micro-expression recognition.",
+      abstract: "Proceedings of the Conference on Information Technology and its Applications (CITA 2026).",
+      date: "2026",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T.", "Nguyen, B. D.", "Nguyen, L. T.", "Le, T. H.", "Ngo, T. D."],
     },
     {
-      title: "Manuscripts Under Review",
-      items: [
-        {
-          title: "Learning and Incentives in Finite-Inventory Data Procurement",
-          authors: "Trinh, H. T.",
-          venue:
-            "Mechanism Design · Statistical Learning · Information Economics",
-          year: "",
-          status: "Under review",
-        },
-        {
-          title: "Maintaining Stable Coalitions under Sequential Agent Arrivals",
-          authors: "Trinh, H. T.",
-          venue: "Multi-Agent Systems · Hedonic Games · Online Algorithms",
-          year: "",
-          status: "Under review",
-        },
-      ],
+      title: "Enhancing micro-expression recognition via multi-task learning with demographic-aware auxiliary supervision.",
+      abstract: "Proceedings of the International Conference on Knowledge and Systems Engineering (KSE 2025).",
+      date: "2025",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T.", "Man, T. B. P.", "Khuong, V. T. A.", "Nguyen, L. T.", "Le, T. H.", "Ngo, T. D."],
+    },
+  ],
+
+  type_two_title: "Manuscripts Under Review",
+  type_two_items: [
+    {
+      title: "Learning and Incentives in Finite-Inventory Data Procurement.",
+      abstract: "Fields: Mechanism Design, Statistical Learning, Information Economics.",
+      date: "",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T."],
     },
     {
-      title: "Manuscript in Preparation",
-      items: [
-        {
-          title: "Derivative-Faithful Neural Networks",
-          authors: "Trinh, H. T.",
-          venue:
-            "Scientific Machine Learning · Surrogate Modeling · Derivative Approximation",
-          year: "",
-          status: "In preparation",
-        },
-      ],
+      title: "Maintaining Stable Coalitions under Sequential Agent Arrivals.",
+      abstract: "Fields: Multi-Agent Systems, Hedonic Games, Online Algorithms.",
+      date: "",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T."],
+    },
+  ],
+
+  type_three_title: "Manuscript in Preparation",
+  type_three_items: [
+    {
+      title: "Derivative-Faithful Neural Networks.",
+      abstract: "Fields: Scientific Machine Learning, Surrogate Modeling, Derivative Approximation.",
+      date: "",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T."],
+    },
+  ],
+
+  type_four_title: "Conference Presentations",
+  type_four_items: [
+    {
+      title: "Disentangling Identity and Motion Information in Micro-Expression Videos for Micro-Expression Recognition.",
+      abstract: "Paper presented at the Conference on Information Technology and its Applications (CITA 2026).",
+      date: "2026",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T."],
     },
     {
-      title: "Conference Presentations",
-      items: [
-        {
-          title:
-            "Disentangling Identity and Motion Information in Micro-Expression Videos for Micro-Expression Recognition",
-          authors: "Trinh, H. T.",
-          venue:
-            "Conference on Information Technology and its Applications (CITA 2026)",
-          year: "2026",
-          status: "Presentation",
-        },
-        {
-          title:
-            "Enhancing Micro-Expression Recognition via Multi-Task Learning with Demographic-Aware Auxiliary Supervision",
-          authors: "Trinh, H. T.",
-          venue:
-            "International Conference on Knowledge and Systems Engineering (KSE 2025)",
-          year: "2025",
-          status: "Presentation",
-        },
-      ],
+      title: "Enhancing Micro-Expression Recognition via Multi-Task Learning with Demographic-Aware Auxiliary Supervision.",
+      abstract: "Paper presented at the International Conference on Knowledge and Systems Engineering (KSE 2025).",
+      date: "2025",
+      link: "",
+      github: "",
+      writers: ["Trinh, H. T."],
     },
   ],
 };
 
+// ---------- Research page data
 const enResearchPageData = {
-  intro:
-    "I study mathematical and computational approaches to decision-making under uncertainty, with an emphasis on reliable learning when information, incentives, or observations are limited.",
-  areas: [
-    {
-      number: "01",
-      title: "Information Procurement & Mechanism Design",
-      summary:
-        "Finite-inventory data procurement under strategic behavior and unknown information quality.",
-      details:
-        "This work develops truthful procurement mechanisms and randomized auditing schemes, together with theoretical guarantees on the cost of learning quality when the buyer has limited inventory.",
-      methods: [
-        "Mechanism design",
-        "Statistical learning",
-        "Information economics",
-        "Randomized auditing",
-      ],
-    },
-    {
-      number: "02",
-      title: "Scientific Machine Learning",
-      summary:
-        "Population-informed neural surrogates for recovering derivatives from sparse, value-only observations.",
-      details:
-        "I investigate when first- and second-order differential information is identifiable and how neural surrogate design affects derivative accuracy, not only value prediction.",
-      methods: [
-        "Neural surrogates",
-        "Automatic differentiation",
-        "Differential identifiability",
-        "Numerical optimization",
-      ],
-    },
-    {
-      number: "03",
-      title: "Affective Computing",
-      summary:
-        "Subject-independent micro-expression recognition under identity and demographic variation.",
-      details:
-        "Earlier work explored demographic-aware multi-task learning and identity–motion representations, resulting in peer-reviewed papers at KSE 2025 and CITA 2026.",
-      methods: [
-        "Computer vision",
-        "Multi-task learning",
-        "Representation learning",
-        "Micro-expression recognition",
-      ],
-    },
-    {
-      number: "04",
-      title: "Quantitative Finance",
-      summary:
-        "Statistically validated medium-frequency strategies and multi-agent approaches to trading-system design.",
-      details:
-        "My applied research covers signal construction, backtesting, portfolio construction, execution, alpha generation, statistical arbitrage, and market microstructure.",
-      methods: [
-        "Time-series analysis",
-        "Backtesting",
-        "Portfolio construction",
-        "Market microstructure",
-      ],
-    },
-  ],
+  title: "Research",
+  content: `
+    <div class="research_content">
+      <p>
+        My research examines mathematical and computational approaches to decision-making under uncertainty,
+        with an emphasis on reliable learning when information, incentives, or observations are limited.
+      </p>
+
+      <h2>Information Procurement & Mechanism Design</h2>
+      <p>
+        I study finite-inventory information procurement under strategic behavior and unknown data quality.
+        This work develops truthful procurement mechanisms, randomized auditing schemes, and theoretical
+        guarantees on the cost of learning quality.
+      </p>
+
+      <h2>Scientific Machine Learning</h2>
+      <p>
+        I investigate population-informed neural surrogate models for recovering first- and second-order
+        differential information from sparse value-only observations, with particular attention to
+        differential identifiability and derivative accuracy.
+      </p>
+
+      <h2>Affective Computing</h2>
+      <p>
+        My earlier research in subject-independent micro-expression recognition explored demographic-aware
+        multi-task learning and identity–motion representations. This work resulted in peer-reviewed papers
+        at KSE 2025 and CITA 2026.
+      </p>
+
+      <h2>Quantitative Finance</h2>
+      <p>
+        I research medium-frequency quantitative trading strategies using historical financial-market data.
+        Areas of interest include signal construction, statistical validation, portfolio construction,
+        execution, alpha generation, statistical arbitrage, market microstructure, and multi-agent systems.
+      </p>
+    </div>
+  `,
 };
 
+// ---------- Experience page data
 const enJobsPageData = {
-  intro:
-    "Research appointments spanning theoretical machine learning, mechanism design, affective computing, and quantitative trading.",
+  title: "Research Experience",
   items: [
     {
       title: "Researcher",
       company: "Beetrade",
-      dates: "2026–Present",
+      startData: "2026",
+      endDate: "",
       location: "",
-      summary:
-        "Quantitative research using historical financial-market data, with an emphasis on statistical validation and market microstructure.",
+      abstract: "Conduct quantitative research using historical financial-market data, with emphasis on statistical validation and market microstructure.",
       achievements: [
-        "Develop and evaluate medium-frequency strategies across signal construction, backtesting, portfolio construction, and execution.",
-        "Investigate alpha generation, statistical arbitrage, execution optimization, and multi-agent trading-system design.",
+        "Develop and evaluate medium-frequency strategies involving signal construction, backtesting, portfolio construction, and execution.",
+        "Investigate alpha generation, statistical arbitrage, execution optimization, and multi-agent approaches to trading-system design.",
       ],
     },
     {
       title: "Research Assistant",
-      company:
-        "Human–Machine Interaction Laboratory · VNU University of Engineering and Technology",
-      dates: "2024–Present",
-      location: "Hanoi, Vietnam",
-      summary:
-        "Research across machine learning, mechanism design, statistical inference, and computational decision-making under the supervision of Dr. Ngo Thi Duyen.",
+      company: "Human–Machine Interaction Laboratory, VNU-UET",
+      startData: "2024",
+      endDate: "",
+      location: "Hanoi",
+      abstract: "Conduct research across machine learning, mechanism design, statistical inference, and computational decision-making under the supervision of Dr. Ngo Thi Duyen.",
       achievements: [
-        "Study finite-inventory information procurement under strategic behavior and unknown data quality, developing truthful mechanisms, randomized auditing schemes, and theoretical guarantees.",
+        "Study finite-inventory information procurement under strategic behavior and unknown data quality, developing truthful procurement mechanisms, randomized auditing schemes, and theoretical guarantees.",
         "Investigate population-informed neural surrogate models for recovering first- and second-order differential information from sparse value-only observations.",
         "Developed demographic-aware and identity–motion methods for subject-independent micro-expression recognition, leading to papers at KSE 2025 and CITA 2026.",
       ],

@@ -1,32 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#123c69" />
-    <meta
-      name="description"
-      content="Research experience of Trinh Hai Tien at VNU-UET's Human–Machine Interaction Laboratory and Beetrade."
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Research experience of Trinh Hai Tien at VNU-UET and Beetrade." />
     <meta property="og:title" content="Experience · Trinh Hai Tien" />
-    <meta property="og:description" content="Research experience from theory to real-world systems." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sieuanhta.github.io/academic-cv/jobs.html" />
     <link rel="canonical" href="https://sieuanhta.github.io/academic-cv/jobs.html" />
-    <link rel="icon" href="files/profile.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/png" href="./assets/images/icons/favicon.png" />
+    <link href="./assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="./assets/css/aos.css" rel="stylesheet" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="./assets/css/custom.css" rel="stylesheet" />
+    <script src="./assets/scripts/default.js"></script>
+    <script src="./data/global.js"></script>
+    <script src="./lang/en.js"></script>
+    <script src="./data/navbar.js"></script>
+    <script>
+      $(function () {
+        $("#include_navbar").load("./utils/navbar.html", function () { renderNavbar(); AOS.init(); });
+      });
+    </script>
     <title>Experience · Trinh Hai Tien</title>
   </head>
-  <body data-page="experience">
-    <a class="skip-link" href="#page-content">Skip to content</a>
-    <header class="site-header" id="site-header"></header>
-    <main class="site-main site-container" id="page-content">
-      <noscript>This website requires JavaScript to display the experience content.</noscript>
+  <body data-page="jobs">
+    <div id="include_navbar"></div>
+    <main class="container pt-4" data-aos="fade-in" id="content_wrapper">
+      <h1 id="jobs_title" class="title"></h1>
+      <div id="jobs_data"></div>
     </main>
-    <footer class="site-footer" id="site-footer"></footer>
-    <script src="data/global.js"></script>
-    <script src="lang/en.js"></script>
-    <script src="data/navbar.js"></script>
-    <script src="assets/scripts/scripts.js"></script>
+    <script src="./assets/scripts/scripts.js"></script>
   </body>
 </html>

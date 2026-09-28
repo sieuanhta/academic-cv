@@ -25,4 +25,4 @@ Then open <http://localhost:8000>.
 
 ## Credits
 
-Adapted from [simamojtahedi/Academic-cv](https://github.com/simamojtahedi/Academic-cv), an MIT-licensed GitHub Pages template. The site has been redesigned and made project-page-safe for deployment below `/academic-cv/`.
+Built with the UI and assets from [simamojtahedi/Academic-cv](https://github.com/simamojtahedi/Academic-cv), an MIT-licensed GitHub Pages template. Internal navigation has been made project-page-safe for deployment below `/academic-cv/`.
