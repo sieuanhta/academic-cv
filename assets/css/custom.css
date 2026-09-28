@@ -44,13 +44,7 @@
 }
 
 .publication_container .publications_header strong.publication_self {
-  display: inline-block;
-  padding: 0.05rem 0.35rem;
-  border-radius: 0.2rem;
-  color: #0b4f8a !important;
-  background-color: #e8f2fb;
-  font-style: normal !important;
-  font-weight: 800 !important;
+  font-weight: 700;
 }
 
 .publication_container .publications_header h2 {
