@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sieuanhta.github.io/academic-cv/sitemap.xml
